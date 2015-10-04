@@ -1,0 +1,29 @@
+{
+  "name": "olive",
+  "version": "1.0.0",
+  "description": "A H5 RIA builder.",
+  "main": "olive.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanpan/Olive.git"
+  },
+  "keywords": [
+    "ht",
+    "ria",
+    "class",
+    "tpl"
+  ],
+  "author": "sean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seanpan/Olive/issues"
+  },
+  "homepage": "https://github.com/seanpan/Olive#readme",
+  "dependencies": {
+    "oliveroot": "^1.0.1",
+    "underscore": "^1.8.3"
+  }
+}

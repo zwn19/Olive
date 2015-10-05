@@ -10,6 +10,7 @@ gulp.task('browserify', function() {
         .pipe(gulp.dest('./dist'));
 });
 
+//TODO watch crash when browserify fail: uncaught exception
 gulp.task('default', function() {
     console.log('default');
     gulp.watch('./src/**/*.js', ['browserify']);

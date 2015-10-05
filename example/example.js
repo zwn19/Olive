@@ -4,7 +4,11 @@ console.log('testing...', Olive);
 var Button = Olive.components.Button;
 
 var btn = new Button({
-    say: 1
+    listeners: {
+        click: function () {
+            alert('Button clicked.')
+        }
+    }
 });
 
 btn.renderTo('body');

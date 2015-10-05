@@ -10838,21 +10838,55 @@ var Component = require('./component/component.js'),
     };
     module.exports = global.Olive = Olive;
 })(typeof window !== "undefined" ? window : this);
-},{"./component/component.js":5,"./component/widget/button.js":6,"oliveroot":2}],5:[function(require,module,exports){
+},{"./component/component.js":5,"./component/widget/button.js":8,"oliveroot":2}],5:[function(require,module,exports){
 var _ = require('underscore'),
     $ = require('jquery');
-
 var Root = require('oliveroot');
+var Renderable = require('./mixin/renderable.js');
+
+var ids = 0;
 
 module.exports = Root.define({
+    mixin: Renderable,
+    //TODO clean
     initialize: function (options) {
         var self = this;
         _.each(options, function(value, key){
             self[key] = value;
         });
+        this.id = ++ids;
+        this.parseConfig = {
+            id: this.id
+        };
+        if (_.isFunction(this._registerEvents))
+            this._registerEvents();
     },
+    destroy: function () {}
+});
+},{"./mixin/renderable.js":7,"jquery":1,"oliveroot":2,"underscore":3}],6:[function(require,module,exports){
+var _ = require('underscore'),
+    $ = require('jquery');
+var Root = require('oliveroot');
+
+module.exports = Root.define({
+    _registerEvents: function () {
+        console.log('registering events...', this.listeners);
+        var self = this;
+        //TODO concern...
+        var $doc = $(document);
+        _.each(this.listeners, function (value, key) {
+            $doc.on(key, '#' + self.id, value);
+        });
+    }
+});
+},{"jquery":1,"oliveroot":2,"underscore":3}],7:[function(require,module,exports){
+var _ = require('underscore'),
+    $ = require('jquery');
+var Root = require('oliveroot');
+
+module.exports = Root.define({
     _parse: function () {
-        this.dom = _.template(this.tpl, this.parseConfig)();
+        this.dom = _.template(this.tpl)(this.parseConfig);
     },
     _render: function () {
         $(this.parentDom).append(this.dom);
@@ -10864,20 +10898,17 @@ module.exports = Root.define({
     },
     remove: function () {},
     show: function () {},
-    hide: function () {},
-    destroy: function () {}
+    hide: function () {}
 });
-},{"jquery":1,"oliveroot":2,"underscore":3}],6:[function(require,module,exports){
+},{"jquery":1,"oliveroot":2,"underscore":3}],8:[function(require,module,exports){
 var _ = require('underscore');
 var Root = require('oliveroot');
 var Component = require('../component.js');
+var Observable = require('../mixin/observable.js');
 
 module.exports = Root.define({
     extend: Component,
-    remove: function () {},
-    show: function () {},
-    hide: function () {},
-    destroy: function () {},
-    tpl: '<div>Button</div>'
+    mixin: Observable,
+    tpl: '<button id="<%= obj.id %>">Button</button>'
 });
-},{"../component.js":5,"oliveroot":2,"underscore":3}]},{},[4]);
+},{"../component.js":5,"../mixin/observable.js":6,"oliveroot":2,"underscore":3}]},{},[4]);

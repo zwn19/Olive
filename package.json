@@ -4,8 +4,7 @@
   "description": "A H5 RIA builder.",
   "main": "olive.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "node watch.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

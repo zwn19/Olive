@@ -8,5 +8,5 @@ module.exports = Root.define({
     show: function () {},
     hide: function () {},
     destroy: function () {},
-    tpl: '<div>aaa</div>'
+    tpl: '<div>Button</div>'
 });

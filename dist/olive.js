@@ -1,61 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var Root = require('oliveroot');
-var Component = require('./component/component.js'),
-    Button = require('./component/widget/button.js');
-
-(function (global) {
-    var Olive = {
-        define: Root.define,
-        components: {
-            Component: Component,
-            Button: Button
-        }
-    };
-    module.exports = global.Olive = Olive;
-})(typeof window !== "undefined" ? window : this);
-},{"./component/component.js":2,"./component/widget/button.js":3,"oliveroot":5}],2:[function(require,module,exports){
-var _ = require('underscore'),
-    $ = require('jquery');
-
-var Root = require('oliveroot');
-
-module.exports = Root.define({
-    initialize: function (options) {
-        var self = this;
-        _.each(options, function(value, key){
-            self[key] = value;
-        });
-    },
-    _parse: function () {
-        this.dom = _.template(this.tpl, this.parseConfig)();
-    },
-    _render: function () {
-        $(this.parentDom).append(this.dom);
-    },
-    renderTo: function (target) {
-        this.parentDom = target || this.target || 'body';
-        this._parse();
-        this._render();
-    },
-    remove: function () {},
-    show: function () {},
-    hide: function () {},
-    destroy: function () {}
-});
-},{"jquery":4,"oliveroot":5,"underscore":6}],3:[function(require,module,exports){
-var _ = require('underscore');
-var Root = require('oliveroot');
-var Component = require('../component.js');
-
-module.exports = Root.define({
-    extend: Component,
-    remove: function () {},
-    show: function () {},
-    hide: function () {},
-    destroy: function () {},
-    tpl: '<div>aaa</div>'
-});
-},{"../component.js":2,"oliveroot":5,"underscore":6}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9267,7 +9210,7 @@ return jQuery;
 
 }));
 
-},{}],5:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 "use strict";
 
 var _ = require('underscore');
@@ -9330,7 +9273,7 @@ exports.define = function (options) {
 
     return klass;
 };
-},{"underscore":6}],6:[function(require,module,exports){
+},{"underscore":3}],3:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -10880,4 +10823,61 @@ exports.define = function (options) {
   }
 }.call(this));
 
-},{}]},{},[1]);
+},{}],4:[function(require,module,exports){
+var Root = require('oliveroot');
+var Component = require('./component/component.js'),
+    Button = require('./component/widget/button.js');
+
+(function (global) {
+    var Olive = {
+        define: Root.define,
+        components: {
+            Component: Component,
+            Button: Button
+        }
+    };
+    module.exports = global.Olive = Olive;
+})(typeof window !== "undefined" ? window : this);
+},{"./component/component.js":5,"./component/widget/button.js":6,"oliveroot":2}],5:[function(require,module,exports){
+var _ = require('underscore'),
+    $ = require('jquery');
+
+var Root = require('oliveroot');
+
+module.exports = Root.define({
+    initialize: function (options) {
+        var self = this;
+        _.each(options, function(value, key){
+            self[key] = value;
+        });
+    },
+    _parse: function () {
+        this.dom = _.template(this.tpl, this.parseConfig)();
+    },
+    _render: function () {
+        $(this.parentDom).append(this.dom);
+    },
+    renderTo: function (target) {
+        this.parentDom = target || this.target || 'body';
+        this._parse();
+        this._render();
+    },
+    remove: function () {},
+    show: function () {},
+    hide: function () {},
+    destroy: function () {}
+});
+},{"jquery":1,"oliveroot":2,"underscore":3}],6:[function(require,module,exports){
+var _ = require('underscore');
+var Root = require('oliveroot');
+var Component = require('../component.js');
+
+module.exports = Root.define({
+    extend: Component,
+    remove: function () {},
+    show: function () {},
+    hide: function () {},
+    destroy: function () {},
+    tpl: '<div>Button</div>'
+});
+},{"../component.js":5,"oliveroot":2,"underscore":3}]},{},[4]);

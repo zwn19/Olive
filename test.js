@@ -1,9 +1,0 @@
-var Olive = require('./Olive.js');
-
-var Button = Olive.components.Button;
-
-var btn = new Button({
-    say: 1
-});
-
-btn.renderTo('abc');

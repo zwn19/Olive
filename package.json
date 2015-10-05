@@ -4,7 +4,8 @@
   "description": "A H5 RIA builder.",
   "main": "olive.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node watch.js"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,11 @@
     "jquery": "^2.1.4",
     "oliveroot": "^1.0.1",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-streamify": "^1.0.2",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

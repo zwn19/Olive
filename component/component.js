@@ -14,11 +14,10 @@ module.exports = Root.define({
         this.dom = _.template(this.tpl, this.parseConfig)();
     },
     _render: function () {
-        console.log(this.dom, this.parentDom);
+        $(this.parentDom).append(this.dom);
     },
-    target: '',
     renderTo: function (target) {
-        this.parentDom = target || this.target;
+        this.parentDom = target || this.target || 'body';
         this._parse();
         this._render();
     },

@@ -5,7 +5,6 @@ var Root = require('oliveroot');
 
 module.exports = Root.define({
     initialize: function (options) {
-        console.log($);
         var self = this;
         _.each(options, function(value, key){
             self[key] = value;

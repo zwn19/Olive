@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/seanpan/Olive#readme",
   "dependencies": {
+    "jquery": "^2.1.4",
     "oliveroot": "^1.0.1",
     "underscore": "^1.8.3"
   }

@@ -1,17 +1,28 @@
-var _ = require('underscore');
+var _ = require('underscore'),
+    $ = require('jquery');
+
 var Root = require('oliveroot');
 
 module.exports = Root.define({
     initialize: function (options) {
+        console.log($);
         var self = this;
         _.each(options, function(value, key){
             self[key] = value;
         });
     },
-    parse: function (config) {
-        return _.template(this.tpl, config)();
+    _parse: function () {
+        this.dom = _.template(this.tpl, this.parseConfig)();
     },
-    renderTo: function () {},
+    _render: function () {
+        console.log(this.dom, this.parentDom);
+    },
+    target: '',
+    renderTo: function (target) {
+        this.parentDom = target || this.target;
+        this._parse();
+        this._render();
+    },
     remove: function () {},
     show: function () {},
     hide: function () {},

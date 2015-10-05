@@ -6,4 +6,4 @@ var btn = new Button({
     say: 1
 });
 
-console.log(btn.parse());
+btn.renderTo('abc');

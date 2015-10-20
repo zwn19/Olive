@@ -56,24 +56,24 @@ var Core = Core || {};
 })()
 
 var B = Core.createClass("B", {
-    say: function() {
-        alert("B");
-        this.callParent();
+    say: function(cnt) {
+        alert("B"+cnt);
+        this.callParent(cnt);
     }
 });
 var BB = Core.createClass("BB", {
     extend: "B",
-    say: function() {
-        alert("BB");
-        this.callParent();
+    say: function(cnt) {
+        alert("BB"+cnt);
+        this.callParent(cnt);
     }
 });
 var BBB = Core.createClass("BBB", {
     extend: "BB",
-    say: function() {
-        alert("BBB");
-        this.callParent();
+    say: function(cnt) {
+        alert("BBB"+cnt);
+        this.callParent(cnt);
     }
 });
 var bb = new BBB();
-bb.say();
+bb.say("-say");

@@ -36,7 +36,7 @@ var Core = Core || {};
                 _proto[p] = val;
             }
         }
-        fn.$superClassName = (superClass || {}).$className;
+        fn.$superClassName = superClass && superClass.$className;
         fn.$className = name;
         return fn;
     }

@@ -11,7 +11,7 @@ var Core = Core || {};
             subClass.prototype.constructor = subClass;
         }
     }
-
+    
     var ClassManager = Core.ClassManager = {
         classes: {},
         BaseClass: null

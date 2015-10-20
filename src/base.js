@@ -20,7 +20,7 @@ var Core = Core || {};
     ClassManager.getClass = function(name){
         return ClassManager.classes[name];
     }
-   Core.createClass = ClassManager.createClass = function(name, cfg) {
+    Core.createClass = ClassManager.createClass = function(name, cfg) {
         ClassManager.classes[name] = fn = function() {};
         var val,
             superClass = cfg.extend && ClassManager.getClass(cfg.extend) || ClassManager.BaseClass;
